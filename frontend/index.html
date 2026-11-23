@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f7f2"><title>WishCraft — thoughtful words, made personal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/tone.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#"><span class="brand-mark">✳</span>WishCraft</a><span id="modePill" class="mode-pill">AI powered</span></header>
+  <main>
+    <section class="hero"><span class="eyebrow">THOUGHTFUL WORDS, MADE PERSONAL</span><h1>Make it <em>meaningful.</em></h1></section>
+    <section class="flow" aria-label="Create a wish">
+      <article class="card discover-card">
+        <div class="card-heading"><span class="step">01</span><h2>Find an occasion</h2></div>
+        <form id="discoverForm">
+          <div class="field-grid"><label>Country<input id="country" value="Canada" required maxlength="80"></label><label>Province / region<input id="region" value="Ontario" required maxlength="80"></label></div>
+          <div class="period-row"><label>Look ahead<select id="period"><option value="7">Next 7 days</option><option value="30">Next 30 days</option><option value="90" selected>Next 90 days</option></select></label><label class="demo-toggle"><input id="demo" type="checkbox"><span>Demo</span></label></div>
+          <details class="extras"><summary>Location & calendar options</summary><div class="extra-fields"><label>Timezone<input id="timezone" value="America/Toronto" required maxlength="64"></label><label>Calendar preferences <span class="optional">optional</span><input id="prefs" placeholder="Lunar calendar, Muslim holidays" maxlength="200"></label></div></details>
+          <button class="button primary" id="discoverBtn" type="submit"><span>Discover occasions</span><span aria-hidden="true">↗</span></button>
+        </form>
+        <div id="discoverStatus" class="status" role="status"></div>
+        <div id="occasionSection" class="occasion-section hidden"><div class="section-label">UPCOMING <span id="occasionCount"></span></div><div id="occasionList" class="occasion-list"></div>
+          <label class="custom-label">Add your own<input id="customOccasion" placeholder="Type an occasion"></label>
+        </div>
+      </article>
+      <article id="personalizeCard" class="card personalize-card hidden">
+        <div class="card-heading"><span class="step">02</span><h2>Make it personal</h2></div>
+        <form id="wishForm">
+          <label>Occasion<input id="occasion" placeholder="Choose or enter an occasion" required maxlength="120"></label>
+          <div class="field-grid">
+            <label>Name <span class="optional">optional</span><input id="recipient" placeholder="Who’s it for?" maxlength="80"></label>
+            <label>Relationship<select id="relationship"><option>Friend</option><option>Family member</option><option>Spouse / Partner</option><option>Colleague</option><option>Manager</option><option>Customer</option><option>Teacher</option><option>Other</option></select></label>
+          </div>
+          <div class="tone-picker">
+            <span class="tone-label">Tone</span>
+            <input id="tone" type="hidden" value="Warm and heartfelt">
+            <div class="tone-grid" role="group" aria-label="Choose a tone">
+              <button class="tone-choice selected" type="button" data-tone="Warm and heartfelt" aria-label="Warm and heartfelt" aria-pressed="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 8.7c0 5.1-8.8 10-8.8 10s-8.8-4.9-8.8-10a4.7 4.7 0 0 1 8.8-2.2 4.7 4.7 0 0 1 8.8 2.2Z"/></svg><span>Heartfelt</span>
+              </button>
+              <button class="tone-choice" type="button" data-tone="Funny and cheerful" aria-label="Funny and cheerful" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5s1.2 2 3.5 2 3.5-2 3.5-2M9 9.5h.01M15 9.5h.01"/></svg><span>Cheerful</span>
+              </button>
+              <button class="tone-choice" type="button" data-tone="Formal and professional" aria-label="Formal and professional" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2"/></svg><span>Professional</span>
+              </button>
+              <button class="tone-choice" type="button" data-tone="Short and simple" aria-label="Short and simple" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h9M5 17h6"/></svg><span>Simple</span>
+              </button>
+              <button class="tone-choice" type="button" data-tone="Poetic and inspirational" aria-label="Poetic and inspirational" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.6 6.4L20 11l-6.4 1.6L12 19l-1.6-6.4L4 11l6.4-1.6L12 3ZM19 16l.7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7L19 16Z"/></svg><span>Poetic</span>
+              </button>
+            </div>
+          </div>
+          <div class="field-grid">
+            <label>Language<select id="language"><option>English</option><option>Urdu</option><option>Arabic</option><option>French</option><option>Spanish</option><option>Hindi</option></select></label>
+            <details class="extras more-details"><summary>Personal note <span class="optional">optional</span></summary><div class="extra-fields"><textarea id="context" rows="2" maxlength="500" placeholder="A memory, an inside joke…"></textarea></div></details>
+          </div>
+          <button class="button primary" id="generateBtn" type="submit"><span>Write my wish</span><span aria-hidden="true">✦</span></button>
+        </form><div id="wishStatus" class="status" role="status"></div>
+      </article>
+    </section>
+    <section id="result" class="result hidden"><div class="result-head"><div><span class="eyebrow">YOUR WISH</span><h2>Ready to share.</h2></div><span id="wishBadge" class="result-badge">Made for you</span></div>
+      <textarea id="wishText" aria-label="Generated greeting, editable" rows="4"></textarea><div class="result-actions"><span id="wishMeta" class="meta"></span><div><button id="copyBtn" class="button secondary">Copy</button><button id="regenBtn" class="button primary">Try again <span aria-hidden="true">↻</span></button></div></div>
+      <details class="transparency"><summary>How it was made</summary><p id="transparencyText"></p></details>
+    </section>
+    <footer>WishCraft <span>Every occasion deserves the perfect words.</span></footer>
+  </main><script src="/app.js" defer></script>
+</body>
+</html>

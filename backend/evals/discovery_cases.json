@@ -1,0 +1,39 @@
+[
+  {
+    "id": "canada-ontario-year-end-2026",
+    "country": "Canada",
+    "region": "Ontario",
+    "timezone": "America/Toronto",
+    "start_date": "2026-12-20",
+    "end_date": "2027-01-03",
+    "cultural_preferences": [],
+    "expected_occasions": [
+      {"name": "Christmas", "date": "2026-12-25"},
+      {"name": "New Year's Day", "date": "2027-01-01"}
+    ]
+  },
+  {
+    "id": "united-states-independence-2027",
+    "country": "United States",
+    "region": "New York",
+    "timezone": "America/New_York",
+    "start_date": "2027-07-02",
+    "end_date": "2027-07-05",
+    "cultural_preferences": [],
+    "expected_occasions": [
+      {"name": "Independence Day", "date": "2027-07-04"}
+    ]
+  },
+  {
+    "id": "france-national-day-2027",
+    "country": "France",
+    "region": "Île-de-France",
+    "timezone": "Europe/Paris",
+    "start_date": "2027-07-13",
+    "end_date": "2027-07-15",
+    "cultural_preferences": [],
+    "expected_occasions": [
+      {"name": "Bastille Day", "date": "2027-07-14"}
+    ]
+  }
+]
